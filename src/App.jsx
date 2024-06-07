@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Todos from './components/Todos';
 
 function App() {
@@ -30,12 +30,18 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const deleteTodo = (todoId) => {
+    const newTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(newTodos);
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>My Todo List</h1>
       <Todos
         todos={todos}
         toggleCompleted={toggleCompleted}
+        deleteTodo={deleteTodo}
       />
     </div>
   );
